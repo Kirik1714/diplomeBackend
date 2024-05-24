@@ -17,4 +17,9 @@ class MedecinePharmacy extends Model
         return $this->belongsTo(Medicine::class, 'medicine_id');
     }
 
+    public function pharmacy()
+    {
+        return $this->belongsTo(Pharmacy::class, 'pharmacy_id');
+    }
+
 }

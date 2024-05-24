@@ -14,7 +14,7 @@ Route::group(['prefix' => 'pharmacy'], function () {
     Route::get('/{pharmacy}/edit', App\Http\Controllers\Main\Pharmacy\EditController::class)->name('pharmacy.edit');
     Route::patch('/{pharmacy}', App\Http\Controllers\Main\Pharmacy\UpdateController::class)->name('pharmacy.update');
     Route::delete('/{pharmacy}', App\Http\Controllers\Main\Pharmacy\DeleteController::class)->name('pharmacy.destroy');
-   
+    
 
     Route::group(['prefix' => '{pharmacy}/assortment'], function () {
         Route::get('/', App\Http\Controllers\Main\Pharmacy\Assortment\IndexController::class)->name('pharmacy.assortment.index');
@@ -24,6 +24,12 @@ Route::group(['prefix' => 'pharmacy'], function () {
         Route::patch('/{assortment}', App\Http\Controllers\Main\Pharmacy\Assortment\UpdateController::class)->name('pharmacy.assortment.update');
         Route::delete('/{assortment}', App\Http\Controllers\Main\Pharmacy\Assortment\DeleteController::class)->name('pharmacy.assortment.destroy');
         Route::get('/search', [App\Http\Controllers\Main\Pharmacy\Assortment\IndexController::class, 'search'])->name('pharmacy.assortment.search');
+    });
+    Route::group(['prefix' => '{pharmacy}/orders'], function () {
+        Route::get('/', App\Http\Controllers\Main\Pharmacy\Order\IndexController::class)->name('pharmacy.order.index');
+        Route::get('/{order}/edit', App\Http\Controllers\Main\Pharmacy\Order\EditController::class)->name('pharmacy.order.edit');
+        Route::patch('/{order}', App\Http\Controllers\Main\Pharmacy\Order\UpdateController::class)->name('pharmacy.order.update');
+        Route::get('/search', [App\Http\Controllers\Main\Pharmacy\Order\IndexController::class, 'search'])->name('pharmacy.order.search');
     });
    
      

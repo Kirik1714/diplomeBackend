@@ -5,17 +5,15 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
-{ 
+{
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('medicines_images', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('medicine_id')->constrained()->onDelete('cascade');
-            $table->foreignId('image_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->string('status')->default('Принят в обработку')->after('total_price');
+
         });
     }
 
@@ -24,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medicines_images');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
     }
 };

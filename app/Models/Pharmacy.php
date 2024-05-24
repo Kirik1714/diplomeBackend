@@ -18,6 +18,11 @@ class Pharmacy extends Model
                     ->withPivot('availability', 'quantity' , 'markup_percentage')
                     ->withTimestamps();
     }
-  
+
+   
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 
 }

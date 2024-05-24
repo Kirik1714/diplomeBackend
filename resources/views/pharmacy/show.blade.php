@@ -74,10 +74,13 @@
 
     <!-- Add Assortment Button -->
     <div class="row mt-4">
-      <div class="col-12">
-        <a href="{{ route('pharmacy.assortment.index', $pharmacy->id) }}" class="btn btn-success">Ассортимент</a>
-      </div>
+    <div class="col-6">
+        <a href="{{ route('pharmacy.assortment.index', $pharmacy->id) }}" class="btn btn-success btn-block">Ассортимент</a>
     </div>
+    <div class="col-6">
+        <a href="{{ route('pharmacy.order.index', $pharmacy->id) }}" class="btn btn-primary btn-block">Заказы</a>
+    </div>
+</div>
   </div>
 </section>
 @endsection

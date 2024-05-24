@@ -5,16 +5,18 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
-{ 
+{
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('medicines_images', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('medicine_id')->constrained()->onDelete('cascade');
-            $table->foreignId('image_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->json('products');
+            $table->decimal('total_price', 8, 2)->default(0);
+            $table->string('order_number')->unique();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medicines_images');
+        Schema::dropIfExists('orders');
     }
 };
