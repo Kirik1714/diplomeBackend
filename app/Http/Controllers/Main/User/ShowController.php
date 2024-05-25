@@ -7,7 +7,7 @@ use App\Models\Pharmacy;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ShowController extends Controller
+class ShowController extends BaseController
 {
     public function __invoke(User $user){
 

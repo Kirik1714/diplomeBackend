@@ -44,6 +44,7 @@ class Medicine extends Model
         return $this->belongsToMany(Pharmacy::class, 'medicine_pharmacy')
                     ->withPivot('availability', 'markup_percentage', 'quantity');
     }
+ 
 
 
 

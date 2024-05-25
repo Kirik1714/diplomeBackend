@@ -66,6 +66,7 @@
                   <td>{{ $pharmacy->work_start }} - {{ $pharmacy->work_end }}</td>
                 </tr>
               </tbody>
+      
             </table>
           </div>
         </div>
@@ -74,13 +75,64 @@
 
     <!-- Add Assortment Button -->
     <div class="row mt-4">
-    <div class="col-6">
+      <div class="col-6">
         <a href="{{ route('pharmacy.assortment.index', $pharmacy->id) }}" class="btn btn-success btn-block">Ассортимент</a>
-    </div>
-    <div class="col-6">
+      </div>
+      <div class="col-6">
         <a href="{{ route('pharmacy.order.index', $pharmacy->id) }}" class="btn btn-primary btn-block">Заказы</a>
+      </div>
     </div>
-</div>
+
+    <!-- Pharmacy Statistics -->
+    <div class="card-body mt-4">
+      <div class="text-center mb-3"><h3>Статистика</h3></div>
+      <canvas id="ordersChart" width="400" height="200"></canvas>
+    </div>
+
   </div>
 </section>
+@endsection
+
+@section('scripts')
+  <script>
+    var orderData = @json($orderData);
+    var months = Object.keys(orderData);
+    var totalOrdersData = months.map(function(month) {
+        return orderData[month]['total_orders'];
+    });
+    var cancelledOrdersData = months.map(function(month) {
+        return orderData[month]['cancelled_orders'];
+    });
+
+    var ctx = document.getElementById('ordersChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: months,
+            datasets: [
+                {
+                    label: 'Количество заказов',
+                    data: totalOrdersData,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Отмененные заказы',
+                    data: cancelledOrdersData,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+  </script>
 @endsection

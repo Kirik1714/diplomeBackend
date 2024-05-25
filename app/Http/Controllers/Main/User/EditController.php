@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
-class EditController extends Controller
+class EditController extends BaseController
 {
     public function __invoke(User $user)
     {

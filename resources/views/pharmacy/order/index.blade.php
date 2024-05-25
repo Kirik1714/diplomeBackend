@@ -26,8 +26,10 @@
         <div class="card">
           <div class="card-header d-flex">
             <div class="flex-grow-1">
-              <a href="{{ route('pharmacy.index') }}" class="btn btn-warning">Назад к списку аптек</a>
+              <a href="{{ route('pharmacy.index') }}" class="btn btn-primary">К списку аптек</a>
+              <a href="{{ route('pharmacy.show', $pharmacy->id) }}" class="btn btn-warning">Назад </a>
             </div>
+
             <div>
               <form action="{{ route('pharmacy.order.search', $pharmacy) }}" method="GET">
                 <div class="input-group">

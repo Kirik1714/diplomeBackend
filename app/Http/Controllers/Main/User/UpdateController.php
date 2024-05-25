@@ -5,28 +5,19 @@ namespace App\Http\Controllers\Main\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UpdateRequest;
 use App\Models\User;
+use App\Services\Main\User\Service;
 
-class UpdateController extends Controller
+class UpdateController extends BaseController
 {
+   
+
     public function __invoke(UpdateRequest $request, User $user)
     {
         // Получение проверенных данных из запроса
         $data = $request->validated();
-        
-        // Преобразование значения is_admin в булево
-        $data['is_admin'] = (bool) $data['is_admin'];
-        
-           // Проверка, было ли отправлено поле пароля
-           if (!empty($data['password'])) {
-            // Если пароль был отправлен, хешируем его и добавляем к данным для обновления
-            $data['password'] = bcrypt($data['password']);
-        } else {
-            // Если пароль не был отправлен, удаляем его из данных для обновления
-            unset($data['password']);
-        }
-        // Обновление пользователя с полученными данными
-        $user->update($data);
-        // dd($user);  
+
+        // Вызов метода сервиса для обновления пользователя
+        $user = $this->service->update($user, $data);
 
         // Возврат представления с обновленным пользователем
         return view('user.show', compact('user'));

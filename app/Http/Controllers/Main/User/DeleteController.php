@@ -8,7 +8,7 @@ use App\Models\Pharmacy;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class DeleteController extends Controller
+class DeleteController extends BaseController
 {
     public function __invoke(User $user)
     {

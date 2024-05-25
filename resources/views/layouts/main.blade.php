@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }} ">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+ 
   <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 
@@ -48,7 +51,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="" class="brand-link">
+    <a href=" {{route('main.index')}}" class="brand-link">
       <span class="brand-text font-weight-light">BoriMed</span>
     </a>
 
