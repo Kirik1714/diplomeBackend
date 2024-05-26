@@ -8,7 +8,7 @@ use App\Models\Medicine;
 use App\Models\Pharmacy;
 use Illuminate\Http\Request;
 
-class EditController extends Controller
+class EditController extends BaseController
 {
 
     public function __invoke(Pharmacy $pharmacy,  $assortment) 

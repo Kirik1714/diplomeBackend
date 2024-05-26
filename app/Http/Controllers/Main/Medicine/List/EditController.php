@@ -10,7 +10,7 @@ use App\Models\Status;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 
-class EditController extends Controller
+class EditController extends BaseController
 {
     public function __invoke(Medicine $medicine)
     {

@@ -7,7 +7,7 @@ use App\Http\Requests\Pharmacy\StoreRequest;
 use App\Models\Pharmacy;
 use Illuminate\Http\Request;
 
-class StoreController extends Controller
+class StoreController extends BaseController
 {
     public function __invoke(StoreRequest $request)
     {

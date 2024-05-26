@@ -59,7 +59,7 @@
             </table>
             <div class="d-flex justify-content-center mt-3">
 
-              {{ $medicines->links() }}
+            {{ $medicines->appends(request()->query())->links() }}
             </div>
           </div>
 

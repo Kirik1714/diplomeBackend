@@ -7,7 +7,7 @@ use App\Http\Requests\Pharmacy\Assortment\UpdateRequest;
 use App\Models\MedecinePharmacy;
 use App\Models\Pharmacy;
 
-class UpdateController extends Controller
+class UpdateController extends BaseController
 {
     public function __invoke(UpdateRequest $request,Pharmacy $pharmacy,MedecinePharmacy $assortment)
     {

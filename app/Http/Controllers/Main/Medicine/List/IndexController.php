@@ -7,7 +7,7 @@ use App\Models\Form;
 use Illuminate\Http\Request;
 use App\Models\Medicine;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     public function __invoke(Request $request)
     {
@@ -18,7 +18,7 @@ class IndexController extends Controller
             $medicines = Medicine::whereRaw('LOWER(name) LIKE ?', ["%".strtolower($query)."%"])->paginate(2);
         } else {
             // Если запроса поиска не было, отображаем все лекарства
-            $medicines = Medicine::paginate(2);
+            $medicines = Medicine::paginate(2)->withQueryString();
         }
 
         return view('medicines.list.index', compact('medicines', 'query'));
@@ -27,7 +27,7 @@ class IndexController extends Controller
 {
     $query = $request->input('query');
 
-    $medicines = Medicine::whereRaw('LOWER(name) LIKE ?', ["%".strtolower($query)."%"])->paginate(1);
+    $medicines = Medicine::whereRaw('LOWER(name) LIKE ?', ["%".strtolower($query)."%"])->paginate(1)->withQueryString();
     
 
     return view('medicines.list.search', compact('medicines', 'query'));

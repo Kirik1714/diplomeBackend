@@ -7,7 +7,7 @@ use App\Models\Medicine;
 use App\Models\Pharmacy;
 use Illuminate\Http\Request;
 
-class CreateController extends Controller
+class CreateController extends BaseController
 {
     public function __invoke(Pharmacy $pharmacy)
     {

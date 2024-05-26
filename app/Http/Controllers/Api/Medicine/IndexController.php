@@ -12,7 +12,7 @@ class IndexController extends Controller
 {
     public function getAllMedicines(FilterRequest $request)
     {
-        $data = $request->validated();
+        $data = $request->validated(); 
         $medicines = Medicine::with(['images', 'pharmacies'])
             ->paginate(2, ['*'], 'page', $data['page']);
     

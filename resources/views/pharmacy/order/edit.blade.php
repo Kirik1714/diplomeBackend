@@ -28,7 +28,7 @@
           <div class="card-header">
             <h3 class="card-title">Информация о заказе</h3>
           </div> 
-          <div class="card-body">
+          <div class="card-body"> 
             <form action="{{ route('pharmacy.order.update', [$pharmacy, $order]) }}" method="post">
               @csrf
               @method('patch')

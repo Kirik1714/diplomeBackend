@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pharmacy;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     public function __invoke()
     {
